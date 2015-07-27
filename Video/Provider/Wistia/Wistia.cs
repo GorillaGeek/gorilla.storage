@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Gorilla.Storage.Video.Interfaces;
 using Gorilla.Storage.Video.Models;
 using Gorilla.Wistia;
+using Gorilla.Wistia.Authentication;
 
 namespace Gorilla.Storage.Video.Provider.Wistia
 {
@@ -109,5 +110,9 @@ namespace Gorilla.Storage.Video.Provider.Wistia
             await _client.Media.Delete(Id);
         }
 
+        public static Wistia Create(string apiPassword)
+        {
+            return new Wistia(new Client(new Password(apiPassword)));
+        }
     }
 }
