@@ -49,7 +49,6 @@
     <Compile Include="Video\Models\Media.cs" />
     <Compile Include="Video\Provider\Wistia\MediaHydrator.cs" />
     <Compile Include="Video\Provider\Wistia\Wistia.cs" />
-    <Compile Include="Video\Video.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

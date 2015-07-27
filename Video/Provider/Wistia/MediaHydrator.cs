@@ -6,7 +6,7 @@ using Gorilla.Storage.Video.Models;
 
 namespace Gorilla.Storage.Video.Provider.Wistia
 {
-    public static class MediaHydrator
+    internal static class MediaHydrator
     {
         internal static IMedia ConvertToMedia(Gorilla.Wistia.Models.Media media)
         {
