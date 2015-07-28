@@ -41,24 +41,39 @@ namespace Gorilla.Storage.Video.Provider.Wistia
             }).ToList();
         }
 
-        public async Task CollectionCreate(ICollection collection)
+        public async Task<ICollection> CollectionCreate(ICollection collection)
         {
-            await _client.Project.Create(collection.Name);
+            var result = await _client.Project.Create(collection.Name);
+            collection.Id = result.hashedId;
+            return collection;
         }
 
-        public async Task CollectionCreate(string name)
+        public async Task<ICollection> CollectionCreate(string name)
         {
-            await _client.Project.Create(name);
+            var result = await _client.Project.Create(name);
+            return new Collection
+            {
+                Id = result.hashedId,
+                Name = result.name,
+                Description = result.description
+            };
         }
 
-        public async Task CollectionUpdate(ICollection collection)
+        public async Task<ICollection> CollectionUpdate(ICollection collection)
         {
             await _client.Project.Update(collection.Id, collection.Name);
+            return collection;
         }
 
-        public async Task CollectionUpdate(string id, string name)
+        public async Task<ICollection> CollectionUpdate(string id, string name)
         {
-            await _client.Project.Update(id, name);
+            var result = await _client.Project.Update(id, name);
+            return new Collection
+            {
+                Id = result.hashedId,
+                Name = result.name,
+                Description = result.description
+            };
         }
 
         public async Task CollectionDelete(ICollection collection)
@@ -95,14 +110,21 @@ namespace Gorilla.Storage.Video.Provider.Wistia
             return MediaHydrator.ConvertToMedia(results);
         }
 
-        public async Task MediaUpdate(string Id, string name, string description="")
+        public async Task<IMedia> MediaUpdate(string Id, string name, string description="")
         {
-            await _client.Media.Update(Id, name, description);
+            var result = await _client.Media.Update(Id, name, description);
+            return new Media()
+            {
+                Id = result.hashed_id,
+                Name = result.name,
+                Description = result.description
+            };
         }
 
-        public async Task MediaUpdate(IMedia media)
+        public async Task<IMedia> MediaUpdate(IMedia media)
         {
             await _client.Media.Update(media.Id, media.Name, media.Description);
+            return media;
         }
 
         public async Task MediaDelete(string Id)
