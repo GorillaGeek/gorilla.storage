@@ -15,8 +15,8 @@ namespace Gorilla.Storage.Video.Interfaces
         Task<ICollection> CollectionUpdate(string id, string name);
         Task CollectionDelete(ICollection collection);
         Task CollectionDelete(string id);
-        Task<IMedia> UploadFile(Stream fileStream, string name = "");
-        Task<IMedia> UploadUrl(string url, string name = "");
+        Task<IMedia> UploadFile(Stream fileStream, string name = "", string projectId = "");
+        Task<IMedia> UploadUrl(string url, string name = "", string projectId = "");
         Task<IMedia> MediaGet(string id);
         Task<IEnumerable<IMedia>> MediaList(int page = 1, int pageSize = 10);
         Task<IMedia> MediaUpdate(string Id, string name, string description="");

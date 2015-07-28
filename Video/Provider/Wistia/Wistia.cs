@@ -86,15 +86,15 @@ namespace Gorilla.Storage.Video.Provider.Wistia
             await _client.Project.Delete(id);
         }
 
-        public async Task<IMedia> UploadFile(Stream fileStream, string name = "")
+        public async Task<IMedia> UploadFile(Stream fileStream, string name = "", string projectId = "")
         {
-            var result = await _client.Upload.File(fileStream, name);
+            var result = await _client.Upload.File(fileStream, name, "", projectId);
             return MediaHydrator.ConvertToMedia(result);
         }
 
-        public async Task<IMedia> UploadUrl(string url, string name = "")
+        public async Task<IMedia> UploadUrl(string url, string name = "", string projectId = "")
         {
-            var result = await _client.Upload.Url(url, name);
+            var result = await _client.Upload.Url(url, name, "", projectId);
             return MediaHydrator.ConvertToMedia(result);
         }
 
