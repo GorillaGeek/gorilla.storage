@@ -9,7 +9,7 @@ namespace Gorilla.Storage.Video.Models
         public string Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public int Duration { get; set; }
+        public float Duration { get; set; }
         public UploadStatus Status { get; set; }
         public float Progress { get; set; }
         public string Thumbnail { get; set; }
