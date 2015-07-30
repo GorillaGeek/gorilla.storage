@@ -12,6 +12,7 @@ namespace Gorilla.Storage.Video.Models
         public float Duration { get; set; }
         public UploadStatus Status { get; set; }
         public float Progress { get; set; }
+        public bool Ready { get; set; }
         public string Thumbnail { get; set; }
     }
 }

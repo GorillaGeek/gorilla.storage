@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>$id$</id>
-    <version>0.0.4</version>
+    <version>$version$</version>
     <title>$title$</title>
     <authors>Carlos André Ferrari</authors>
     <owners>caferrari</owners>

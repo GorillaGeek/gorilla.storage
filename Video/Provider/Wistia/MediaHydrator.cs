@@ -18,7 +18,8 @@ namespace Gorilla.Storage.Video.Provider.Wistia
                 Id = media.hashed_id,
                 Progress = media.progress,
                 Thumbnail = media.thumbnail?.url,
-                Duration = media.duration
+                Duration = media.duration,
+                Ready = false
             };
 
             switch (media.status)
@@ -30,10 +31,11 @@ namespace Gorilla.Storage.Video.Provider.Wistia
                     result.Status = UploadStatus.Processing;
                     break;
                 case "ready":
+                    result.Ready = true;
                     result.Status = UploadStatus.Ready;
                     break;
                 case "failed":
-                    result.Status = UploadStatus.Ready;
+                    result.Status = UploadStatus.Failed;
                     break;
             }
 

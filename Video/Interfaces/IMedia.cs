@@ -11,6 +11,7 @@ namespace Gorilla.Storage.Video.Interfaces
         float Duration { get; set; }
         UploadStatus Status { get; set; }
         float Progress { get; set; }
+        bool Ready { get; set; }
         string Thumbnail { get; set; }
     }
 }
